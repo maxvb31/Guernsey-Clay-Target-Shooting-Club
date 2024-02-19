@@ -8,6 +8,6 @@ export default defineConfig({
     projectId: '71zgsnps',
     dataset: 'production',
     apiVersion: 'v2021-03-25',
-    useCdn: true,
+    useCdn: false,
   })]
 });
