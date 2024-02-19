@@ -3,6 +3,8 @@ import {getAllPosts} from '../sanity/api.js';
 
 
 const posts = await getAllPosts();
+
+export const revalidate = 30;
 ---
 
 <html lang="en">
