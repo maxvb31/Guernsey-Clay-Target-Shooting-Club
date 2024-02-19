@@ -1,0 +1,906 @@
+---
+import {getAllPosts} from '../sanity/api.js';
+
+
+const posts = await getAllPosts();
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="./GCTSC Favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Guernsey's largest Clay Target shooting club and host a full calendar of events throughout the year.">
+		<meta name="generator" content={Astro.generator} />
+		<title>Guernsey Clay Target Shooting Club</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<link rel="shortcut icon" type="image/x-icon" href="./GCTSC FAV.png" />
+		<style>
+			/* Custom CSS for image to always fill column */
+			.image-container {
+			  position: relative;
+			  width: 100%;
+			  height: 100%;
+			  overflow: hidden;
+			}
+		
+			.image-container img {
+			  width: 100%;
+			  height: 100%;
+			  object-fit: cover;
+			}
+			
+			/* Custom CSS for button and nav background color */
+			.btn-primary, .navbar {
+			  background-color: #6BA1AF;
+			  border: none;
+			}
+		
+			
+		
+			@media (max-width: 767px) {
+			  .col-md-4 {
+				max-width: 150px;
+				height: auto;
+				margin: 0 auto; /* Center the thumbnails */
+			  }
+			}
+		
+			.banner {
+			  position: relative;
+			  height: 300px;
+			  background-image: url(./Range-pano\ resize.png);
+			  background-size: cover;
+			  background-position: center;
+			  color: #fff; /* Text color */
+			  text-align: center;
+			  display: flex;
+			  flex-direction: column;
+			  justify-content: center;
+			  align-items: center;
+			}
+		
+			.banner-text {
+			  margin-bottom: 20px;
+			}
+		
+			.btn-banner {
+			  background-color: #6BA1AF; /* Button background color */
+			  color: #fff; /* Button text color */
+			  border: none;
+			  padding: 10px 20px;
+			  border-radius: 5px;
+			  text-transform: uppercase;
+			}
+			.image-section {
+			  padding-top: 50px; /* Adjust as needed */
+			  padding-bottom: 50px; /* Adjust as needed */
+			}
+		
+			.image-container {
+			  position: relative;
+			  overflow: hidden;
+			}
+			.left-column {
+			  background-color: #f0f0f0;
+			}
+		
+			.right-column {
+			  background-color: #FFCE85;
+			}
+			.px-6{
+				padding: 0 120px !important;
+			}
+			@media (max-width: 767px) {
+				.px-6{
+					padding: 0 40px !important;
+				}
+			}
+			body {
+			  font-family: 'Montserrat', sans-serif;
+			}
+			#fixtures{
+			background-color: #feeac6;
+			padding-top: 50px;
+		}
+		
+		.three-boxes{
+			background-color: #feeac6;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			max-width: 100%;
+			
+		}
+		
+		
+		.inner-container{
+			background-color: rgba(255, 255, 255, 0.8); /* Fallback for browsers that don't support backdrop-filter */
+			border-radius: 15px;
+			height: 150px;
+			display: flex;
+			width: 100%;
+		}
+		
+		.inner-section-1, .inner-section-2, .inner-section-3, .inner-section-4{
+			width: 25%;
+			display: flex;
+			flex-direction: column;
+			border-radius: 15px 0 0 15px;
+			cursor: pointer;
+		
+		}
+		
+		.inner-section-2, .inner-section-3{
+			border-radius: 0;
+		}
+		
+		.inner-section-4{
+			border-radius: 0 15px 15px 0;
+		}
+		
+		
+		.inner-section-1{
+			background-color: #A0A0A0;
+			color: black;
+		}
+		
+		.inner-section-2:hover{
+			background-color: #A0A0A0;
+		}
+		
+		
+		.inner-section-3:hover{
+			background-color: #A0A0A0;
+		}
+		.inner-section-4:hover{
+			background-color: #A0A0A0;
+		}
+		
+		.inner-container h2{
+			font-size: 18px;
+		}
+		
+		.inner-section-text{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.inner-section-text h2{
+			width: 100%;
+			text-align: center;
+		}
+		
+		.discipline{
+			font-weight: 400;
+		}
+		
+		#fixtures{
+			display: flex;
+			flex-direction: row;
+			padding-bottom: 40px;
+		}
+		
+		.fixtures-text{
+			background-color: white;
+			flex-basis: 50%;
+			background-color: #feeac6;
+		}
+		
+		.fixtures-text h2{
+			padding-right: 8px;
+			padding-bottom: 15px;
+		}
+		
+		.three-boxes{
+			flex-basis: 50%;
+			margin-bottom: 15px;
+		}
+		
+		.fixtures-box-container{
+			width: 100%;
+			background-color: white;
+			background-color: #feeac6;
+		}
+		
+		.fixtures-text p{
+			padding: 5px 0;
+			padding-right: 20px;
+		}
+		
+		@media only screen and (max-width: 1000px){
+			.three-boxes{
+				flex-basis: 100%;
+			}
+			.fixtures-text{
+				flex-basis: 100%;
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+			#fixtures{
+				display: flex;
+				flex-direction: column;
+				padding-top: 25px;
+				gap: 20px;
+			}
+			.fixtures-text h2{
+				font-size: 22px;
+		
+			}
+			.fixtures-text p{
+				font-size: 14px;
+				padding: 8px 0;
+			}
+			.fixtures-box-container h2{
+				font-size: 14px;
+				
+			}
+		
+			.inner-container{
+				height: 110px;
+			}
+		 
+		
+			
+		}
+			.accordion-item {
+			  margin-bottom: 10px;
+			}
+			.accordion-item:hover{
+			  cursor: pointer;
+			}
+		
+			.btn:focus {
+			outline: none !important;
+			box-shadow: none !important;
+			text-decoration: none !important;
+		  }
+		  .btn:hover{
+			text-decoration: none !important;
+		  }
+		  .navbar-nav {
+			  text-align: center; /* Initially center align */
+			}
+		
+			@media (max-width: 767px) {
+			  .navbar-collapse.show .navbar-nav {
+				text-align: center; /* Center align when expanded */
+				margin: 0 auto;
+			  }
+			}
+			/* Your CSS styles here */
+			.fade-in {
+			  opacity: 0;
+			  transform: translateY(20px);
+			  transition: opacity 0.5s ease, transform 0.5s ease;
+			}
+		
+			.fade-in.active {
+			  opacity: 1;
+			  transform: translateY(0);
+			}
+			@media (max-width: 767px) {
+		  /* Disable fade-in effect for small screens */
+		  .fade-in {
+			opacity: 1 !important;
+			transform: none !important;
+			transition: none !important;
+		  }
+		  .hero-left-col{
+			height: 400px !important;
+		  }
+		  .hero-right-col{
+			height: 400px !important;
+		  }
+		}
+		@media (max-width: 767px) {
+		  /* Center hero text for small screens */
+		  .hero-left-col {
+			text-align: center !important;
+		  }
+		}
+		
+		  </style>
+	</head>
+
+
+	<body>
+		  
+		<!-- Navigation -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+			<div class="container">
+			  <a class="navbar-brand" href="#">
+				<img src="./logo.png" width="100" height="30" alt="Logo">
+			  </a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+				  <li class="nav-item active">
+					<a class="nav-link" href="#hero">Home <span class="sr-only">(current)</span></a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="#group-shoots">Groups</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="#fixtures">Fixtures</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="#fixtures">Results</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="#contact">Contact</a>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+		  </nav>
+		
+		  <!-- Hero -->
+		  <section id="hero">
+		  <div class="row no-gutters">
+			<div class="col-md-6 d-flex align-items-center justify-content-center hero-left-col" style="height: 800px; background-color: #FFCE85;">
+			  <div class="px-md-5 ">
+				<h1>Guernsey Clay Target <br> Shooting Club</h1>
+				<a href="#fixtures"><button class="btn btn-primary ">Fixtures</button></a>
+			  </div>
+			</div>
+			<div class="col-md-6 hero-right-col" style="height: 800px;">
+			  <div class="image-container">
+				<img src="./Hero Image.png" alt="Your Image">
+			  </div>
+			</div>
+		  </div>
+		</section>
+		
+		<!-- About -->
+		<section>
+		  <div class="row no-gutters">
+			  <div class="col-lg-6 col-12 order-lg-2 d-flex align-items-center justify-content-center p-5" style="height: 500px; ">
+				  <div>
+					  <h2>Welcome</h2>
+					  <p>We are Guernsey's largest Clay Target shooting club and host a full calendar of events 
+						  throughout the year. We offer a wide range of clay shooting disciplines, suitable for 
+						  novices through to experienced shooters.</p>
+		
+					  <p>For non-members with experience, we are open on Sunday mornings from 09:00am until 12:30pm and have club guns available 
+						  if you are visiting Guernsey.
+					  </p>
+				  </div>
+			  </div>
+			  <div class="col-lg-6 col-12 order-lg-1 d-flex align-items-center justify-content-center" style="height: 500px;">
+				  <div class="image-container">
+					  <img src="./new about image.jpeg" alt="">
+				  </div>
+			  </div>
+		  </div>
+		</section>
+		
+		
+		  <!-- Banner Section -->
+		  <section class="banner">
+			<div class="container">
+			  <div class="banner-text">
+				<h2>Book your group shoot</h2>
+			  </div>
+			  <a href="#contact" class="btn btn-primary custom-button">Contact</a>
+			</div>
+		  </section>
+		
+		  <div class="container-xl image-section mt-4 fade-in" id="group-shoots">
+			<div class="row">
+			  <div class="col-md-4 d-flex align-items-center justify-content-center px-sm-5 px-lg-3">
+				<div class="thumbnail">
+				  <img src="./1.png" alt="Image 1" class="img-fluid">
+				  <div class="caption image-caption text-center">
+					<p>Birthdays</p>
+				  </div>
+				</div>
+			  </div>
+			  <div class="col-md-4 d-flex align-items-center justify-content-center px-sm-5 px-lg-3">
+				<div class="thumbnail">
+				  <img src="./2.png" alt="Image 2" class="img-fluid">
+				  <div class="caption image-caption text-center">
+					<p>Corporate</p>
+				  </div>
+				</div>
+			  </div>
+			  <div class="col-md-4 d-flex align-items-center justify-content-center px-sm-5 px-lg-3">
+				<div class="thumbnail">
+				  <img src="./3.png" alt="Image 3" class="img-fluid">
+				  <div class="caption image-caption text-center">
+					<p>Stag&Hen</p>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  
+		
+		  
+		  <!-- Two Column Section -->
+		  <section class="container-fluid">
+			<div class="row">
+			  <!-- Left Column -->
+			  <div class="col-lg-7 col-12 left-column d-flex align-items-center justify-content-center px-6" style="height: 500px; background-color: #f0f0f0;">
+				<div class="text-center">
+				  <div class="text-left">
+					<h2>Group Shoots</h2>
+					<p>Clay Target shooting is an exhilarating and challenging form of entertainment for any group event between March and September. Our instructors will provide a safe, fun, and competitive morning of shooting.</p>
+					<p>For over 50 years, our club has provided a unique opportunity to motivate staff, entertain clients, or just to have fun with friends.</p>
+					<a href="#contact"><button class="btn btn-primary">Book Now</button></a>
+				  </div>
+				</div>
+			  </div>
+			  <!-- Right Column -->
+			  <div class="col-lg-5 col-12 right-column d-flex align-items-center justify-content-center px-5" style="height: 500px; background-color: #FFCE85;">
+				<div class="text-center">
+				  <div class="text-left">
+					<h2>Morning Shoot Format</h2>
+					<p>Registration, a cup of tea, and meeting our friendly instructors</p>
+					<p>Split into teams and given scorecards</p>
+					<p>Gun and range safety talk, then taught how to handle a gun</p>
+					<p>A friendly and banter-full competition between the teams</p>
+					<p>Photos taken, scores tallied, and winners announced</p>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </section>
+		  
+		   <!--Fixtures Section-->
+		
+		   <div id="fixtures" class="container-fluid px-5 py-sm-5">
+			<div class="fixtures-text hidden d-flex flex-column align-items-left justify-content-center">
+				<h2 class="fixtures-heading text-center text-md-left">Upcoming Fixtures</h2>
+				<p>We offer a variety of shooting disciplines across the island's ranges. These change weekly and are available on the GCTSC website.
+				  <br> <br> Our primary range is located at Portinfer, a headland on the North West coast of Guernsey. We shoot English Skeet, ISU, Sporting, Sport trap, Universal Trap and ABT.
+				  <br> <br> To view the full year of fixtures, please view this <a href="Fixtures.pdf" target="_blank">pdf.</a></p>
+			</div>
+		
+			<div class="fixtures-box-container py-3">
+				<div class="three-boxes">
+					<div class="inner-container">
+						<div class="inner-section-1">
+							<div class="inner-section-text">
+								<h2>Date (2024)</h2>
+								<h2><div id="fixture-1">
+									<ul style={{ listStyleType: 'none', padding: 0}}>
+									  {posts.map(post => (
+										<li>
+										  <h2>{post.row1Date}</h2>
+										</li>
+									  ))}
+									</ul>
+								  </div></h2>
+							</div>
+						</div>
+						<div class="inner-section-2">
+							<div class="inner-section-text">
+								<h2>Range 1</h2>
+								<h2 class="discipline"><div id="fixture-2">
+									<ul style={{ listStyleType: 'none', padding: 0}}>
+									  {posts.map(post => (
+										<li>
+										  <h2>{post.row1Range1}</h2>
+										</li>
+									  ))}
+									</ul>
+								  </div></h2>
+							</div>
+						</div>
+						<div class="inner-section-3">
+							<div class="inner-section-text">
+								<h2>Range 2</h2>
+								<h2 class="discipline"><div id="fixture-3">
+									<ul style={{ listStyleType: 'none', padding: 0}}>
+									  {posts.map(post => (
+										<li>
+										  <h2>{post.row1Range2}</h2>
+										</li>
+									  ))}
+									</ul>
+								  </div></h2>
+							</div>
+						</div>
+						<div class="inner-section-4">
+							<div class="inner-section-text">
+								<h2>Range 3</h2>
+								<h2 class="discipline"><div id="fixture-4">
+									<ul style={{ listStyleType: 'none', padding: 0}}>
+									  {posts.map(post => (
+										<li>
+										  <h2>{post.row1Range3}</h2>
+										</li>
+									  ))}
+									</ul>
+								  </div></h2>
+							</div>
+						</div>
+					</div> 
+				</div>
+		
+				<div class="three-boxes hidden">
+					<div class="inner-container">
+						<div class="inner-section-1">
+							<div class="inner-section-text">
+								<h2>Date (2024)</h2>
+								<h2><div id="fixture-5">
+									<ul style={{ listStyleType: 'none', padding: 0}}>
+									  {posts.map(post => (
+										<li>
+										  <h2>{post.row2Date}</h2>
+										</li>
+									  ))}
+									</ul>
+								  </div></h2>
+							</div>
+						</div>
+						<div class="inner-section-2">
+							<div class="inner-section-text">
+								<h2>Range 1</h2>
+								<h2 class="discipline"><div id="fixture-6">
+									<ul style={{ listStyleType: 'none', padding: 0}}>
+									  {posts.map(post => (
+										<li>
+										  <h2>{post.row2Range1}</h2>
+										</li>
+									  ))}
+									</ul>
+								  </div></h2>
+							</div>
+						</div>
+						<div class="inner-section-3">
+							<div class="inner-section-text">
+								<h2>Range 2</h2>
+								<h2 class="discipline"><div id="fixture-7">
+									<ul style={{ listStyleType: 'none', padding: 0}}>
+									  {posts.map(post => (
+										<li>
+										  <h2>{post.row2Range2}</h2>
+										</li>
+									  ))}
+									</ul>
+								  </div></h2>
+							</div>
+						</div>
+						<div class="inner-section-4">
+							<div class="inner-section-text">
+								<h2>Range 3</h2>
+								<h2 class="discipline"><div id="fixture-8">
+									<ul style={{ listStyleType: 'none', padding: 0}}>
+									  {posts.map(post => (
+										<li>
+										  <h2>{post.row2Range3}</h2>
+										</li>
+									  ))}
+									</ul>
+								  </div></h2>
+							</div>
+						</div>
+					</div> 
+				</div>
+		
+				<div class="three-boxes hidden">
+					<div class="inner-container">
+						<div class="inner-section-1">
+							<div class="inner-section-text">
+								<h2>Date (2024)</h2>
+								<h2><div id="fixture-9">
+									<ul style={{ listStyleType: 'none', padding: 0}}>
+									  {posts.map(post => (
+										<li>
+										  <h2>{post.row3Date}</h2>
+										</li>
+									  ))}
+									</ul>
+								  </div></h2>
+							</div>
+						</div>
+						<div class="inner-section-2">
+							<div class="inner-section-text">
+								<h2>Range 1</h2>
+								<h2 class="discipline"><div id="fixture-10">
+									<ul style={{ listStyleType: 'none', padding: 0}}>
+									  {posts.map(post => (
+										<li>
+										  <h2>{post.row3Range1}</h2>
+										</li>
+									  ))}
+									</ul>
+								  </div></h2>
+							</div>
+						</div>
+						<div class="inner-section-3">
+							<div class="inner-section-text">
+								<h2>Range 2</h2>
+								<h2 class="discipline"><div id="fixture-11">
+									<ul style={{ listStyleType: 'none', padding: 0}}>
+									  {posts.map(post => (
+										<li>
+										  <h2>{post.row3Range2}</h2>
+										</li>
+									  ))}
+									</ul>
+								  </div></h2>
+							</div>
+						</div>
+						<div class="inner-section-4">
+							<div class="inner-section-text">
+								<h2>Range 3</h2>
+								<h2 class="discipline"><div id="fixture-12">
+									<ul style={{ listStyleType: 'none', padding: 0}}>
+									  {posts.map(post => (
+										<li>
+										  <h2>{post.row3Range3}</h2>
+										</li>
+									  ))}
+									</ul>
+								  </div></h2>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</div>
+		
+		
+		<section id="results" class="pb-5" style="background-color: #feeac6;">
+		  <div class="container">
+			<h2 class="text-center display-5 pb-3">Results</h2>
+			<div class="table-responsive">
+			  <table class="table table-bordered">
+				<thead class="table-dark">
+				  <tr>
+					<th style="min-width: 100px; max-width: 200px;">Date</th>
+					<th>Discipline</th>
+					<th>Discipline</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr>
+					<td>Date 1</td>
+					<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, vel.</td>
+					<td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos vero reiciendis?</td>
+				  </tr>
+				  <tr>
+					<td>Date 2</td>
+					<td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos vero reiciendis?</td>
+					<td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos vero reiciendis?</td>
+				  </tr>
+				</tbody>
+				<thead class="table-dark">
+				  <tr>
+					<th style="min-width: 100px; max-width: 200px;">Date</th>
+					<th>Discipline</th>
+					<th>Discipline</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr>
+					<td>Date 1</td>
+					<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, vel.</td>
+					<td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos vero reiciendis?</td>
+				  </tr>
+				  <tr>
+					<td>Date 2</td>
+					<td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos vero reiciendis?</td>
+					<td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum quos vero reiciendis?</td>
+				  </tr>
+				</tbody>
+			  </table>
+			  
+			</div>
+		  </div>
+		</section>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- Accordion -->
+		<div class="container-sm mt-5 mb-5">
+		  <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+		  <div id="accordion">
+		
+			<!-- Accordion Item 1 -->
+			<div class="accordion-item">
+			  <div class="card">
+				<div class="card-header" id="headingOne" style="background-color: #ffbd59;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+				  <h5 class="mb-0">
+					<button class="btn btn-link" style="list-style: none; color: black; outline: none;">
+					  How can I become a member?
+					</button>
+				  </h5>
+				</div>
+		
+				<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+				  <div class="card-body">
+					To become a member, you will need to contact us to attend an induction course. If you decide that this is a sport you wish to take up, we would welcome you as a member.
+				  </div>
+				</div>
+			  </div>
+			</div>
+		
+			<!-- Accordion Item 2 -->
+			<div class="accordion-item">
+			  <div class="card">
+				<div class="card-header" id="headingTwo" style="background-color: #ffbd59;" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+				  <h5 class="mb-0">
+					<button class="btn btn-link collapsed" style="list-style: none; color: black; outline: none;">
+					  What are your opening times?
+					</button>
+				  </h5>
+				</div>
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+				  <div class="card-body">
+					We open on Sunday mornings at 08:00 to begin setting up for the day's events. We start shooting at 09:15 and the last round goes out at 12:30.
+				  </div>
+				</div>
+			  </div>
+			</div>
+		
+			<!-- Accordion Item 3 -->
+			<div class="accordion-item">
+			  <div class="card">
+				<div class="card-header" id="headingThree" style="background-color: #ffbd59;" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+				  <h5 class="mb-0">
+					<button class="btn btn-link collapsed" style="list-style: none; color: black; outline: none;">
+					  Do you have any rules or regulations I should be aware of?
+					</button>
+				  </h5>
+				</div>
+				<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+				  <div class="card-body">
+					Yes, we do have a set of rules and regulations to ensure the safety of all shooters and spectators. These will be explained to you during your induction course.
+				  </div>
+				</div>
+			  </div>
+			</div>
+		
+		   <!-- Accordion Item 4 -->
+		   <div class="accordion-item">
+			<div class="card">
+			  <div class="card-header" id="headingFour" style="background-color: #ffbd59;" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+				<h5 class="mb-0">
+				  <button class="btn btn-link collapsed" style="list-style: none; color: black; outline: none;">
+					Which shooting disciplines are available?
+				  </button>
+				</h5>
+			  </div>
+			  <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+				<div class="card-body">
+				  The range can be set up for any of the following shoots: English Skeet, ISU, Sporting, Sport trap, Universal trap, Olympic Trap, and ABT. Please see the Fixtures section to see what we're shooting on a particular week.
+				</div>
+			  </div>
+			</div>
+		  </div>
+		
+		  <!-- Accordion Item 5 -->
+		  <div class="accordion-item">
+			<div class="card">
+			  <div class="card-header" id="headingFive" style="background-color: #ffbd59;" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+				<h5 class="mb-0">
+				  <button class="btn btn-link collapsed" style="list-style: none; color: black; outline: none;">
+					I'm a visitor, can I just turn up?
+				  </button>
+				</h5>
+			  </div>
+			  <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+				<div class="card-body">
+				  Provided you have experience at clay shooting, you are welcome to come along on a Sunday morning. Club guns will be available, but you will be asked to pay non-member rates.
+				</div>
+			  </div>
+			</div>
+		  </div>
+		
+		</div>
+		</div>
+		
+		
+		
+		
+		<section id="contact" style="background-color: #f0f0f0;">
+		  <div class="container pt-5 pb-5">
+			<div class="row">
+			  <div class="col-md-6 mx-auto">
+				<h2 class="text-center mb-4">Contact Us</h2>
+				<p class="text-center mb-4">Send us an email or use the form below to enquire about group bookings, memberships, fixtures and any other information! We aim to respond to all enquiries in 1-2 days.</p>
+				<p class="mt-4 text-center"><a href="tel:01481 235686">Phone: +44 (0)1481 235686</a> </p>
+				<p class="text-center"><a href="mailto:secretary@guernseyclayshooting.com">secretary@guernseyclayshooting.com</a></p>
+				<form action="https://formspree.io/f/xnqenpyb" method="post">
+				  <div class="form-group">
+					<label for="name">Name</label>
+					<input type="text" class="form-control" id="name" name="name" required>
+				  </div>
+				  <div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" class="form-control" id="email" name="email" required>
+				  </div>
+				  <div class="form-group">
+					<label for="enquiry">Enquiry</label>
+					<textarea class="form-control" id="enquiry" name="enquiry" rows="5" required></textarea>
+				  </div>
+				  <button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			  </div>
+			</div>
+		  </div>
+		  </section>
+		
+		
+		  
+		
+		  <!-- Footer -->
+		  <footer class="footer py-4">
+			<div class="container text-center">
+			  <span class="text-muted">&copy; 2024 Guernsey Clay Target Shooting Club</span>
+			</div>
+		  </footer>
+
+		  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		
+		
+		  <!-- Bootstrap JS -->
+		  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+		  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		
+		  <script>
+			// Close mobile dropdown when a link is clicked
+			document.querySelectorAll('.navbar-nav a').forEach(function(element) {
+			  element.addEventListener('click', function() {
+				document.querySelector('.navbar-collapse').classList.remove('show');
+			  });
+			});
+			 // Smooth scrolling when a link is clicked
+			 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			  anchor.addEventListener('click', function (e) {
+				e.preventDefault();
+		
+				document.querySelector(this.getAttribute('href')).scrollIntoView({
+				  behavior: 'smooth'
+				});
+			  });
+			});
+			 // Function to check if an element is in the viewport
+			 function isInViewport(element) {
+			  const rect = element.getBoundingClientRect();
+			  return (
+				rect.top >= 0 &&
+				rect.left >= 0 &&
+				rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+				rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+			  );
+			}
+		
+			// Function to add 'active' class to elements in viewport
+			function addActiveClass() {
+			  document.querySelectorAll('.fade-in').forEach(item => {
+				if (isInViewport(item)) {
+				  item.classList.add('active');
+				}
+			  });
+			}
+		
+			// Event listener for scroll event
+			window.addEventListener('scroll', addActiveClass);
+		
+			// Initial check on page load
+			addActiveClass();
+		  </script>
+	</body>
+</html>
