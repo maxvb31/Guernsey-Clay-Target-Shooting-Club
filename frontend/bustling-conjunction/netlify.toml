@@ -1,4 +1,4 @@
 [build]
   base = "frontend/bustling-conjunction"
-  command = "astro build"
+  command = "npx astro build"
   publish = "dist"
