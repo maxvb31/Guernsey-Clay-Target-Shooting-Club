@@ -856,12 +856,7 @@ export const revalidate = 30;
 
 		
 		  <script>
-			// Close mobile dropdown when a link is clicked
-			document.querySelectorAll('.navbar-nav a').forEach(function(element) {
-			  element.addEventListener('click', function() {
-				document.querySelector('.navbar-collapse').classList.remove('show');
-			  });
-			});
+
 			 // Smooth scrolling when a link is clicked
 			 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 			  anchor.addEventListener('click', function (e) {
