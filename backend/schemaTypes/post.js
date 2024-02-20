@@ -79,5 +79,66 @@ export default defineType({
       title: 'Row 3 Range 3',
       type: 'string',
     }),
+    defineField({
+      name: 'resultRow1Date',
+      title: 'Results Row 1 Date',
+      type: 'string',
+    }),
+    defineField({
+      name: 'resultRow1Discipline1',
+      title: 'Results Row 1 Discipline 1',
+      type: 'string',
+    }),
+    defineField({
+      name: 'resultRow1Discipline2',
+      title: 'Results Row 1 Discipline 2',
+      type: 'string',
+    }),
+    defineField({
+      name: 'resultRow2Date',
+      title: 'Results Row 2 Date',
+      type: 'string',
+    }),
+    defineField({
+      name: 'resultRow2Discipline1',
+      title: 'Results Row 2 Discipline 1',
+      type: 'string',
+    }),
+    defineField({
+      name: 'resultRow2Discipline2',
+      title: 'Results Row 2 Discipline 2',
+      type: 'string',
+    }),
+    defineField({
+      name: 'resultRow3Date',
+      title: 'Results Row 3 Date',
+      type: 'string',
+    }),
+    defineField({
+      name: 'resultRow3Discipline1',
+      title: 'Results Row 3 Discipline 1',
+      type: 'string',
+    }),
+    defineField({
+      name: 'resultRow3Discipline2',
+      title: 'Results Row 3 Discipline 2',
+      type: 'string',
+    }),
+    defineField({
+      name: 'resultRow4Date',
+      title: 'Results Row 4 Date',
+      type: 'string',
+    }),
+    defineField({
+      name: 'resultRow4Discipline1',
+      title: 'Results Row 4 Discipline 1',
+      type: 'string',
+    }),
+    defineField({
+      name: 'resultRow4Discipline2',
+      title: 'Results Row 4 Discipline 2',
+      type: 'string',
+    }),
+    
   ],
 });
