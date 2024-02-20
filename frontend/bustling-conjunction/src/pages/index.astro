@@ -248,14 +248,25 @@ export const revalidate = 30;
 			}
 		 
 		
-			
-		}
-			.accordion-item {
-			  margin-bottom: 10px;
-			}
-			.accordion-item:hover{
-			  cursor: pointer;
-			}
+			.accordion {
+    width: 80%;
+  }
+  .accordion-item {
+    background-color: orange;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5px;
+  }
+  .accordion-header {
+    padding: 10px;
+    cursor: pointer;
+  }
+  .accordion-header:hover {
+    background-color: #ff9900;
+  }
+  .accordion-content {
+    display: none;
+    padding: 10px;
+  }
 		
 			.btn:focus {
 			outline: none !important;
@@ -713,104 +724,38 @@ export const revalidate = 30;
 		
 		
 		
-		<!-- Accordion -->
-		<div class="container-sm mt-5 mb-5">
-		  <h2 class="text-center mb-4">Frequently Asked Questions</h2>
-		  <div id="accordion">
-		
-			<!-- Accordion Item 1 -->
+		<div class="accordion">
 			<div class="accordion-item">
-			  <div class="card">
-				<div class="card-header" id="headingOne" style="background-color: #ffbd59;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-				  <h5 class="mb-0">
-					<button class="btn btn-link" style="list-style: none; color: black; outline: none;">
-					  How can I become a member?
-					</button>
-				  </h5>
-				</div>
-		
-				<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-				  <div class="card-body">
-					To become a member, you will need to contact us to attend an induction course. If you decide that this is a sport you wish to take up, we would welcome you as a member.
-				  </div>
-				</div>
+			  <div class="accordion-header">Accordion 1</div>
+			  <div class="accordion-content">
+				Content for Accordion 1
 			  </div>
 			</div>
-		
-			<!-- Accordion Item 2 -->
 			<div class="accordion-item">
-			  <div class="card">
-				<div class="card-header" id="headingTwo" style="background-color: #ffbd59;" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-				  <h5 class="mb-0">
-					<button class="btn btn-link collapsed" style="list-style: none; color: black; outline: none;">
-					  What are your opening times?
-					</button>
-				  </h5>
-				</div>
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-				  <div class="card-body">
-					We open on Sunday mornings at 08:00 to begin setting up for the day's events. We start shooting at 09:15 and the last round goes out at 12:30.
-				  </div>
-				</div>
+			  <div class="accordion-header">Accordion 2</div>
+			  <div class="accordion-content">
+				Content for Accordion 2
 			  </div>
 			</div>
-		
-			<!-- Accordion Item 3 -->
 			<div class="accordion-item">
-			  <div class="card">
-				<div class="card-header" id="headingThree" style="background-color: #ffbd59;" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-				  <h5 class="mb-0">
-					<button class="btn btn-link collapsed" style="list-style: none; color: black; outline: none;">
-					  Do you have any rules or regulations I should be aware of?
-					</button>
-				  </h5>
-				</div>
-				<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-				  <div class="card-body">
-					Yes, we do have a set of rules and regulations to ensure the safety of all shooters and spectators. These will be explained to you during your induction course.
-				  </div>
-				</div>
+			  <div class="accordion-header">Accordion 3</div>
+			  <div class="accordion-content">
+				Content for Accordion 3
 			  </div>
 			</div>
-		
-		   <!-- Accordion Item 4 -->
-		   <div class="accordion-item">
-			<div class="card">
-			  <div class="card-header" id="headingFour" style="background-color: #ffbd59;" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-				<h5 class="mb-0">
-				  <button class="btn btn-link collapsed" style="list-style: none; color: black; outline: none;">
-					Which shooting disciplines are available?
-				  </button>
-				</h5>
+			<div class="accordion-item">
+			  <div class="accordion-header">Accordion 4</div>
+			  <div class="accordion-content">
+				Content for Accordion 4
 			  </div>
-			  <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-				<div class="card-body">
-				  The range can be set up for any of the following shoots: English Skeet, ISU, Sporting, Sport trap, Universal trap, Olympic Trap, and ABT. Please see the Fixtures section to see what we're shooting on a particular week.
-				</div>
+			</div>
+			<div class="accordion-item">
+			  <div class="accordion-header">Accordion 5</div>
+			  <div class="accordion-content">
+				Content for Accordion 5
 			  </div>
 			</div>
 		  </div>
-		
-		  <!-- Accordion Item 5 -->
-		  <div class="accordion-item">
-			<div class="card">
-			  <div class="card-header" id="headingFive" style="background-color: #ffbd59;" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-				<h5 class="mb-0">
-				  <button class="btn btn-link collapsed" style="list-style: none; color: black; outline: none;">
-					I'm a visitor, can I just turn up?
-				  </button>
-				</h5>
-			  </div>
-			  <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
-				<div class="card-body">
-				  Provided you have experience at clay shooting, you are welcome to come along on a Sunday morning. Club guns will be available, but you will be asked to pay non-member rates.
-				</div>
-			  </div>
-			</div>
-		  </div>
-		
-		</div>
-		</div>
 		
 		
 		
@@ -855,6 +800,21 @@ export const revalidate = 30;
 
 		
 		  <script>
+
+		const accordionItems = document.querySelectorAll('.accordion-item');
+				
+		accordionItems.forEach(item => {
+		  item.addEventListener('click', () => {
+			if (item.classList.contains('active')) {
+			  item.classList.remove('active');
+			} else {
+			  accordionItems.forEach(item => {
+				item.classList.remove('active');
+			  });
+			  item.classList.add('active');
+			}
+		  });
+		});
 			// Close mobile dropdown when a link is clicked
 			document.querySelectorAll('.navbar-nav a').forEach(function(element) {
 			  element.addEventListener('click', function() {
